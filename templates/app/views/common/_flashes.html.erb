@@ -1,0 +1,16 @@
+<% if flash.any? %>
+  <div class="flashes">
+    <% flash.each do |key, messages| %>
+      <div class="<%= flash_class(key) %>">
+        <% close_button_tag(data: {dismiss: 'alert'}) %>
+        <ul>
+          <% Array(messages).each do |message| %>
+            <li>
+              <%= message %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <%= csrf_meta_tags %>
+    <title><%= title %></title>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+
+    <%= javascript_include_tag 'libs' %>
+    <%= javascript_include_tag 'application' %>
+
+    <%= render 'analytics' %>
+
+    <% if Rails.env.test? %>
+      <%= javascript_tag do %>
+        $.fx.off = true;
+        $.ajaxSetup({ async: false });
+      <% end %>
+    <% end %>
+
+    <%= yield(:head) %>
+  </head>
+
+  <body>
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <%= render 'common/header' %>
+
+    <main role="main">
+      <% render 'common/flashes' %>
+
+      <%= yield %>
+    </main>
+
+    <%= render 'common/footer' %>
+  </body>
+
+</html>

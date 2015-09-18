@@ -1,5 +1,10 @@
 module Suspenders
   module Actions
+    def replace_file(relative_path, *args)
+      remove_file(relative_path)
+      copy_file(relative_path, *args)
+    end
+
     def replace_in_file(relative_path, find, replace)
       path = File.join(destination_root, relative_path)
       contents = IO.read(path)
@@ -10,7 +15,7 @@ module Suspenders
     end
 
     def action_mailer_host(rails_env, host)
-      config = "config.action_mailer.default_url_options = { host: #{host} }"
+      config = "config.action_mailer.default_url_options = {host: #{host}}"
       configure_environment(rails_env, config)
     end
 
@@ -29,5 +34,6 @@ module Suspenders
         before: "\nend"
       )
     end
+
   end
 end

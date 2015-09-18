@@ -1,6 +1,7 @@
 search:
   paths:
     - "app/controllers"
+    - "app/models"
     - "app/helpers"
     - "app/presenters"
     - "app/views"
@@ -8,6 +9,7 @@ search:
 ignore_unused:
   - activerecord.*
   - date.*
+  - devise.*
   - simple_form.*
   - time.*
   - titles.*
